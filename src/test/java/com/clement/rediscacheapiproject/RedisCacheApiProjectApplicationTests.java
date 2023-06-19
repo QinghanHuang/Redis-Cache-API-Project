@@ -36,10 +36,23 @@ class RedisCacheApiProjectApplicationTests {
         stringRedisTemplate.opsForSet().add("www","q");
     }
     @Test
-    public void test(){
-        System.out.println(stringRedisTemplate.opsForValue().get("clement"));
-        System.out.println(stringRedisTemplate.opsForList());
-        
+    public void zsetTest(){
+        stringRedisTemplate.opsForZSet().add("www","qweqwe",1);
+        stringRedisTemplate.opsForZSet().add("www","qwfghfe",2);
+        stringRedisTemplate.opsForZSet().add("www","fghqwe",3);
+
+    }
+    @Test
+    public void hashTest(){
+        stringRedisTemplate.opsForHash().put("rrrr","qqq","123asd1");
+        stringRedisTemplate.opsForHash().put("rrrr","123","12asd31");
+        stringRedisTemplate.opsForHash().put("rrrr","434","12asd31");
+        stringRedisTemplate.opsForHash().put("rrrr","444","12asd31");
+
+    }
+    @Test
+    public void outputTest(){
+        System.out.println(stringRedisTemplate.opsForHash().get("rrrr", "123"));
     }
 
 }
